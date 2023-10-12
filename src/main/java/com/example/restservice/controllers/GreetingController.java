@@ -1,0 +1,44 @@
+package com.example.restservice.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.restservice.model.Greeting;
+import com.example.restservice.model.Response;
+import com.example.restservice.services.GreetingService;
+
+@RestController
+public class GreetingController implements IGreetingController {
+
+    @Autowired
+    private GreetingService service;
+
+
+    @Override
+    public List<Greeting> getAllGreetings(){
+        return service.getAllGreetings();
+    }
+
+    @Override
+    public Greeting getGreeting( Long id) throws Exception{
+        return service.getGreeting(id);
+    }
+
+    @Override
+    public Greeting createGreeting( Long id,  String content) throws Exception{
+        return service.createGreeting(id, content);
+    }
+
+    @Override
+    public Greeting updateGreeting( Long id, String content) throws Exception{
+        return service.updateGreeting(id, content);
+    }
+
+    @Override
+    public Response deleteGreeting( Long id) throws Exception {
+        return service.deleteGreeting(id);
+    }
+
+}
